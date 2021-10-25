@@ -10,9 +10,11 @@ public class GearSlotUI : MonoBehaviour, IDropHandler
         Debug.Log("OnDrop");
         if (eventData.pointerDrag != null)
         {
+            DragDrop dragDrop = eventData.pointerDrag.GetComponent<DragDrop>();
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
-            eventData.pointerDrag.GetComponent<DragDrop>().droppedOnSlot = true;
-            eventData.pointerDrag.GetComponent<DragDrop>().defaultPos = transform.position;
+            dragDrop.droppedOnSlot = true;
+            dragDrop.defaultPos = transform.position;
+            dragDrop.ResetAnchor();
         }
     }
 
